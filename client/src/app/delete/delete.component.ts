@@ -8,7 +8,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class DeleteComponent {
 
   constructor(){}
-  // To hold value from parent
   @Input() item : string | undefined;
   @Output() Oncancel = new EventEmitter();
   @Output() OnDelete = new EventEmitter();

@@ -1,166 +1,179 @@
-<!-- new dashboard  -->
+<!-- Modern Dashboard -->
+<div class="container-fluid min-vh-100 bg-light d-flex flex-column">
+  <div class="container py-4 flex-grow-1 d-flex flex-column">
 
-<div class="container-fluid">
-    <div class="container-1">
-        <!-- heading  -->
-        <div class="heading-1">
-            <div class="navbar-1">
-                <div class="nav-part1">
-                    <h1> Financial Fortress</h1>
-                </div>
-                <div class="nav-part2">
-                    <span>{{user}}</span>
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <img src="../../assets/images/user1.png" alt="">
-                    </button>
-                    <div class="dropdown">
-                        <ul class="dropdown-menu bg-danger">
-                            <li><button class="btn text-white p-1" type="button" (click)="delete()">Delete
-                                    Account</button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="heading-2" [ngClass]="acno? 'style1': '' ">
-                <div class="head-p1">
-                    <p>{{sDate | date}}</p>
-                    <div class="balance">
-                        Balance : ₹ {{balance}}
-                    </div>
-                </div>
-                <div class="head-p2">
-                    <button type="button" (click)="logout()"
-                        class="btn btn-secondary text-white mb-4 p-2">LOGOUT</button>
-                    <br>
-                    <a routerLink="/trasaction">View Transactions</a>
-                </div>
-            </div>
+    <!-- Navbar -->
+    <nav class="d-flex justify-content-between align-items-center bg-white p-3 rounded shadow-sm mb-5">
+      <h2 class="fw-bold text-primary m-0">Zhanibek's Bank</h2>
+      <div class="d-flex align-items-center gap-3">
+        <span class="fw-semibold text-dark">{{ user }}</span>
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary d-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false" aria-label="User menu">
+            <img src="../../assets/images/user1.png" alt="User" width="36" height="36" class="rounded-circle" />
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <button class="dropdown-item text-danger" type="button" (click)="delete()">Delete Account</button>
+            </li>
+          </ul>
         </div>
-        <!-- heading end  -->
+      </div>
+    </nav>
 
-        <app-delete [item]="acno" (Oncancel)="onCancel()" (OnDelete)="onDelete($event)"></app-delete>
- 
-        <div class="container-fluid p-3" [ngClass]="acno? 'style1': '' ">
-            <div class="container-fluid bg-white rounded section-1">
-                <div class="part1 py-5">
-                    <div class="dw-body">
-                        <div class="dw-header p-2">
-                            <h1 class="text-white text-center">Deposit</h1>
-                        </div>
-                        <form action="" [formGroup]="depositForm">
-                            <input type="text" formControlName="acno" name="accountNumber" id="dpAcno"
-                                placeholder="Enter Your Account Number">
-                            <div *ngIf="this.depositForm.get('acno')?.errors && this.depositForm.get('acno')?.touched"
-                                class="text-danger ps-5">invalid account number</div>
+    <!-- Account Info Section -->
+    <section
+      class="d-flex justify-content-between align-items-center bg-white p-4 rounded shadow-sm mb-5"
+      [ngClass]="acno ? 'border border-success' : ''"
+      style="gap: 1rem;"
+    >
+      <div>
+        <p class="mb-1 text-muted small">{{ sDate | date:'mediumDate' }}</p>
+        <h4 class="mb-0">
+          Balance: <span class="text-success fw-bold fs-5">{{ balance | number }} tenge</span>
+        </h4>
+      </div>
+      <div class="d-flex gap-3">
+        <button type="button" class="btn btn-outline-danger" (click)="logout()">Logout</button>
+        <a routerLink="/trasaction" class="btn btn-primary">View Transactions</a>
+      </div>
+    </section>
 
+    <!-- Delete Modal Component -->
+    <app-delete [item]="acno" (Oncancel)="onCancel()" (OnDelete)="onDelete($event)"></app-delete>
 
-                            <input type="password" formControlName="pswd" name="password" id="dpPswd"
-                                placeholder="Enter Your Account Password">
-                            <div *ngIf="this.depositForm.get('pswd')?.errors && this.depositForm.get('pswd')?.touched"
-                                class="text-danger ps-5">invalid password </div>
-
-                            <input type="text" formControlName="dAmt" name="depositAmount" id="dpAmount" class="mb-4"
-                                placeholder="Enter Deposit Amount">
-                            <div *ngIf="this.depositForm.get('dAmt')?.errors && this.depositForm.get('dAmt')?.touched"
-                                class="text-danger ps-5">invalid amount</div>
-
-                            <button type="submit" (click)="deposit()">Deposit</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="part2 py-5">
-                    <div class="dw-body">
-                        <div class="dw-header p-2">
-                            <h1 class="text-white text-center">Withdraw</h1>
-                        </div>
-                        <form action="" [formGroup]="withdrawForm">
-                            <input type="text" formControlName="acno1" name="accountNumber" id="wtAcno"
-                                placeholder="Enter Your Account Number">
-                            <div *ngIf="this.withdrawForm.get('acno1')?.errors && this.withdrawForm.get('acno1')?.touched"
-                                class="text-danger ps-5">invalid account number</div>
-
-                            <input type="password" formControlName="pswd1" name="password" id="wtPswd"
-                                placeholder="Enter Your Account Password">
-                            <div *ngIf="this.withdrawForm.get('pswd1')?.errors && this.withdrawForm.get('pswd1')?.touched"
-                                class="text-danger ps-5">invalid password</div>
-
-                            <input type="text" formControlName="wAmt" name="withdrawAmount" id="wtAmount" class="mb-4"
-                                placeholder="Enter Withdraw Amount">
-                            <div *ngIf="this.withdrawForm.get('wAmt')?.errors && this.withdrawForm.get('wAmt')?.touched"
-                                class="text-danger ps-5">invalid Amount</div>
-
-                            <button type="submit" (click)="withdraw()">Withdraw</button>
-                        </form>
-                    </div>
-                </div>
+    <!-- Deposit and Withdraw Section -->
+    <div
+      class="row g-4 mb-5"
+      [ngClass]="acno ? 'border border-success rounded p-4 bg-white shadow-sm' : ''"
+    >
+      <!-- Deposit -->
+      <div class="col-md-6">
+        <div class="p-4 bg-light rounded h-100 d-flex flex-column">
+          <h3 class="text-primary text-center mb-4 fw-semibold">Deposit</h3>
+          <form [formGroup]="depositForm" (ngSubmit)="deposit()" class="d-flex flex-column gap-3 flex-grow-1">
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              formControlName="acno"
+              placeholder="Account Number"
+              aria-label="Deposit Account Number"
+            />
+            <div *ngIf="depositForm.get('acno')?.errors && depositForm.get('acno')?.touched" class="text-danger small">
+              Invalid account number
             </div>
+
+            <input
+              type="password"
+              class="form-control form-control-lg"
+              formControlName="pswd"
+              placeholder="Password"
+              aria-label="Deposit Password"
+            />
+            <div *ngIf="depositForm.get('pswd')?.errors && depositForm.get('pswd')?.touched" class="text-danger small">
+              Invalid password
+            </div>
+
+            <input
+              type="number"
+              class="form-control form-control-lg"
+              formControlName="dAmt"
+              placeholder="Deposit Amount"
+              aria-label="Deposit Amount"
+              min="0"
+              step="0.01"
+            />
+            <div *ngIf="depositForm.get('dAmt')?.errors && depositForm.get('dAmt')?.touched" class="text-danger small">
+              Invalid amount
+            </div>
+
+            <button type="submit" class="btn btn-success btn-lg mt-auto">Deposit</button>
+          </form>
         </div>
+      </div>
 
-
-        <div class="container-fluid p-3" [ngStyle]="{'display':displayAboutUs}">
-            <div class="container-fluid bg-white rounded p-3">
-                <h3 class="text-center ">About Us</h3>
-                <div class="row">
-                    <div class="col text-end">
-                        <button type="button" (click)="hideAbout()" class="btn  px-3 m-3"><img src="../../assets/images/multiply.png" style="width:30px" alt=""></button>
-                    </div>
-                </div>
-                <div class="container-fluid bg-light rounded p-3">
-                    <p class="" style=" line-height:30px">Founded in 2XXX, our bank has been providing high-quality financial services to individuals and
-                        businesses in India for over number of years. Our mission is to help our customers achieve
-                        their financial goals by providing expert guidance, personalized attention, and a wide range of
-                        financial products and services to meet their needs.
-
-                        We believe in putting our customers first, and we are committed to providing exceptional
-                        customer service at every step of the way. Whether you are opening a new account, applying for a
-                        loan, or seeking advice on investment strategies, our team of experienced professionals is here
-                        to help.
-
-                        Our bank is also committed to giving back to the communities we serve. We believe that strong
-                        communities are built on a foundation of strong businesses and responsible financial practices,
-                        and we are proud to support local initiatives and charities that promote economic growth and
-                        social well-being.
-
-                        At our bank, we understand that managing your finances can be complex and overwhelming at times.
-                        That's why we are dedicated to providing you with the tools, resources, and support you need to
-                        make informed financial decisions and achieve your goals. Thank you for choosing us as your
-                        financial partner.</p>
-                </div>
+      <!-- Withdraw -->
+      <div class="col-md-6">
+        <div class="p-4 bg-light rounded h-100 d-flex flex-column">
+          <h3 class="text-danger text-center mb-4 fw-semibold">Withdraw</h3>
+          <form [formGroup]="withdrawForm" (ngSubmit)="withdraw()" class="d-flex flex-column gap-3 flex-grow-1">
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              formControlName="acno1"
+              placeholder="Account Number"
+              aria-label="Withdraw Account Number"
+            />
+            <div *ngIf="withdrawForm.get('acno1')?.errors && withdrawForm.get('acno1')?.touched" class="text-danger small">
+              Invalid account number
             </div>
+
+            <input
+              type="password"
+              class="form-control form-control-lg"
+              formControlName="pswd1"
+              placeholder="Password"
+              aria-label="Withdraw Password"
+            />
+            <div *ngIf="withdrawForm.get('pswd1')?.errors && withdrawForm.get('pswd1')?.touched" class="text-danger small">
+              Invalid password
+            </div>
+
+            <input
+              type="number"
+              class="form-control form-control-lg"
+              formControlName="wAmt"
+              placeholder="Withdraw Amount"
+              aria-label="Withdraw Amount"
+              min="0"
+              step="0.01"
+            />
+            <div *ngIf="withdrawForm.get('wAmt')?.errors && withdrawForm.get('wAmt')?.touched" class="text-danger small">
+              Invalid amount
+            </div>
+
+            <button type="submit" class="btn btn-danger btn-lg mt-auto">Withdraw</button>
+          </form>
         </div>
-
-
-        <footer style="background-color: #1c2331">
-            <div class="container mx-auto p-5 text-white">
-                <div class="row px-3">
-                    <div class="col-md-4 mb-5">
-                        <h6 class="text-uppercase fw-bold mb-4">Links</h6>
-                        <p>
-                            <a routerLink="/trasaction" type="button" class="text-white">View Transactions</a>
-                        </p>
-
-                    </div>
-                    <div class="col-md-4 mb-5">
-                        <h6 class="text-uppercase fw-bold mb-4">About Us</h6>
-                        <p>
-                            <button type="button" (click)="showAbout()" class="text-white">Financial Fortress</button>
-                        </p>
-                    </div>
-                    <div class="col-md-4 mb-5">
-                        <h6 class="text-uppercase fw-bold  mb-4">Contact</h6>
-                        <p><i class="fas fa-home mr-3 "></i> North Paravoor, KL, INDIA</p>
-                        <p><i class="fas fa-envelope mr-3"></i> financial.fortress@example.com</p>
-                        <p><i class="fas fa-phone mr-3"></i> +91 12345678</p>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-                © 2023 Copyright:
-                <a class="text-white" href="">FinancialFortress.com</a>
-            </div>
-        </footer>
+      </div>
     </div>
+
+    <!-- About Us Section -->
+    <section
+      class="bg-white rounded shadow-sm p-4 mb-5"
+      [ngStyle]="{ display: displayAboutUs }"
+    >
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="m-0 fw-semibold">About Us</h4>
+        <button type="button" class="btn-close" (click)="hideAbout()" aria-label="Close About Us"></button>
+      </div>
+      <div class="bg-light p-3 rounded">
+        <p class="mb-0" style="line-height: 1.7;">
+          Description.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-5 pb-4 mt-auto rounded-top">
+      <div class="container">
+        <div class="row text-center text-md-start">
+          <div class="col-md-4 mb-4">
+            <h6 class="text-uppercase fw-bold mb-3">Links</h6>
+            <p><a routerLink="/trasaction" class="text-white text-decoration-none">View Transactions</a></p>
+          </div>
+          <div class="col-md-4 mb-4">
+            <h6 class="text-uppercase fw-bold mb-3">About Us</h6>
+            <p><button class="btn btn-link text-white p-0 text-decoration-none" (click)="showAbout()">Zhanibek's Bank</button></p>
+          </div>
+          <div class="col-md-4 mb-4">
+            <h6 class="text-uppercase fw-bold mb-3">Contact</h6>
+            <p><i class="fas fa-home me-2"></i>Almaty</p>
+            <p><i class="fas fa-envelope me-2"></i>zhanibek@gmail.com</p>
+            <p><i class="fas fa-phone me-2"></i>+7 777 7777</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
 </div>

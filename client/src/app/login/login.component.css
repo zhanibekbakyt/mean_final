@@ -1,157 +1,129 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Ubuntu', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(50deg, #088F8F 0%, #182848 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container-1 {
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(50deg, #088F8F 0%, #182848 100%);
-    padding-top: 12px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
 }
 
 .head1 {
-    text-align: center;
-    font-size: 60px;
-    background: -webkit-linear-gradient(#fcfff3, #899ac2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 2px;
-
+  font-size: 32px;
+  font-weight: 700;
+  color: #03045e;
+  margin-bottom: 8px;
 }
 
 .head2 {
-    text-align: center;
-    color: rgb(228, 221, 221);
-    font-family: 'Roboto', sans-serif;
-}
-
-.login {
-    width: 500px;
-    height: auto;
-    margin: auto;
-    margin-top: 40px;
-    background-color: #e4dada;
-    box-shadow: rgba(255, 255, 255, 0.15) 0px 5px 15px 0px;
-    border-radius: 10px;
-
-    padding: 10px 40px;
-    padding-bottom: 40px;
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 24px;
 }
 
 img {
-    width: 75px;
-    display: block;
-    margin: auto;
-
+  width: 64px;
+  margin-bottom: 16px;
 }
 
 .head3 {
-    font-family: 'Noto Serif', serif;
-    text-align: center;
-    color: #0e8a60;
-    padding: 10px 0;
-    letter-spacing: 3px;
-    font-size: 35px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #007f5f;
+  margin-bottom: 20px;
 }
 
 label {
-    color: #0e8a60;
+  font-size: 14px;
+  color: #007f5f;
+  display: block;
+  margin-bottom: 6px;
+  text-align: left;
 }
 
 input {
-    width: 100%;
-    display: block;
-    margin: auto;
-    padding: 10px;
-    height: 40px;
-    border-radius: 10px;
-    border: 1px solid rgb(184, 178, 178);
-    outline: none;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.3s;
 }
+
+input:focus {
+  border-color: #00b4d8;
+}
+
 input::placeholder {
-    color: gray;
+  color: #999;
 }
 
-input:focus::placeholder {
-    color: rgb(185, 185, 197);
-}
-
-.link p{
-    color: #0e8a60;
-}
-.link a {
-    color: #147756;
-}
 button {
-    color: white;
-    background-color: #0e8a60;
-
-    padding: 6px 12px;
-    font-size: 110%;
-    border-radius: 10px;
-    border: 1px solid rgb(173, 167, 167);
-    display: block;
-    margin: auto;
-    transition: .5s;
-
+  width: 100%;
+  padding: 10px;
+  background-color: #007f5f;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-    color: #0e8a60;
-    background-color: #8ee5c4;
+  background-color: #00b386;
 }
 
-
-
-
-
-
-
-
-
-
-@media (min-width:768px) and (max-width:1023px) {
-    .container {
-        padding-top: 80px;
-    }
+.link {
+  margin-top: 15px;
 }
 
-@media (max-width:767px) {
-    .login {
-        width: 80%;
-    }
+.link p,
+.link a {
+  font-size: 13px;
+  color: #007f5f;
+  text-decoration: none;
+}
 
-    .head1 {
-        font-size: 36px;
-    }
+.link a:hover {
+  text-decoration: underline;
+}
 
-    .head2 {
-        font-size: 17px;
-    }
+@media (max-width: 768px) {
+  .container-1 {
+    margin: 20px;
+    padding: 30px 20px;
+  }
 
-    img {
-        width: 50px;
-    }
+  .head1 {
+    font-size: 28px;
+  }
 
-    .head3 {
-        font-size: 30px;
-    }
+  .head2 {
+    font-size: 13px;
+  }
 
-    label {
-        font-size: 14px;
-    }
-
-    ::placeholder {
-        font-size: 12px;
-    }
-
-    .container {
-        padding-top: 25px;
-    }
+  .head3 {
+    font-size: 20px;
+  }
 }

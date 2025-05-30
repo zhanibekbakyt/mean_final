@@ -8,19 +8,28 @@ import { DataService } from '../services/data.service';
 })
 export class TransactionComponent {
 
-  acno:any;
-  transactions:any;
-  
-  constructor(private ds:DataService){
-    this.acno = JSON.parse(localStorage.getItem('currentAcno') || "" );
-    this.ds.getTransaction(this.acno).subscribe(
-      (result:any) => {
-        this.transactions = result.transaction;
-      },
-      (result) => {
-        alert(result.error.message)
-      }
-    )
+  acno: any;
+  transactions: any[] = [];
+  filterType: 'all' | 'credit' | 'debit' = 'all';
+
+  constructor(private ds: DataService) {
+    this.acno = JSON.parse(localStorage.getItem('currentAcno') || 'null');
+    if (this.acno) {
+      this.ds.getTransaction(this.acno).subscribe(
+        (result: any) => {
+          this.transactions = result.transaction || [];
+        },
+        (error) => {
+          alert(error.error.message);
+        }
+      );
+    }
   }
 
+  get filteredTransactions() {
+    if (this.filterType === 'all') {
+      return this.transactions;
+    }
+    return this.transactions.filter(t => t.type.toLowerCase() === this.filterType);
+  }
 }

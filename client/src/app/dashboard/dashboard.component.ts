@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   acno1: any;
   pswd1: any;
   wAmt: any;
-  user: any; // To hold current username
+  user: any; 
   sDate: any;
 
   balance:any;
@@ -30,10 +30,6 @@ export class DashboardComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    // if (!localStorage.getItem('currentAcno')) {/////////
-    //   alert('please login first');////////
-    //   this.router.navigateByUrl('');///////
-    // }
     this.getBalance()
   }
 

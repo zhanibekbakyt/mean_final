@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-// Global http header object 
 const options = {
   headers:new HttpHeaders()
 }
@@ -11,8 +10,8 @@ const options = {
 })
 export class DataService {
 
-  currentUser:any;// To hold currentuser
-  currentAcno:any; // To hold current acno
+  currentUser:any;
+  currentAcno:any; 
 
   userDetails:any = {
     1000 : {acno:1000, username:'Amal', password:1000, balance:2000, transaction:[]},
@@ -53,11 +52,8 @@ export class DataService {
   }
 
   getToken(){
-    // fetch the token from local storage
     const token = JSON.parse(localStorage.getItem('Token') || '');
-    // generate header
     let header = new HttpHeaders()
-    //append token inside header
     if(token){
       options.headers = header.append('x-access-token', token);
     }

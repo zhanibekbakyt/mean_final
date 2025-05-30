@@ -16,14 +16,12 @@ export class RegisterComponent {
 
   constructor(private ds: DataService, private router: Router, private fb: FormBuilder) { }
 
-  //model for register
   registerForm = this.fb.group({
     uname: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
     acno: ['', [Validators.required, Validators.pattern('[0-9]*')]],
     pswd: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]]
   })
   
-  //control passed through html page
   register() {
     const acno = this.registerForm.value.acno;
     const uname = this.registerForm.value.uname;
@@ -41,16 +39,7 @@ export class RegisterComponent {
       )
     }
 
-    // console.log(acno,pswd,uname);
-    // const result = this.ds.register(acno, uname, pswd);
-    // if(this.registerForm.valid){
-    //   if (result){
-    //     alert('Register successfully');
-    //     this.router.navigateByUrl('');
-    //   } else {
-    //     alert('Registration Failed');
-    //   }
-    // }
+
   }
 
 

@@ -8,35 +8,25 @@ import { DataService } from '../services/data.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit { // 3rd executed
-  // class is collection of properties and methods
+export class LoginComponent implements OnInit { 
 
-  constructor(private router: Router, private ds: DataService, private fb: FormBuilder) { // 1st executed
-    // used for object initialization
-    // It automatically invokes when an object is created.
+  constructor(private router: Router, private ds: DataService, private fb: FormBuilder) { 
   }
 
-  ngOnInit(): void {// 2nd executed
-    // Initial process of a component
-    // when a component is created at same time it initialize or authorize
-    // when a component is created there is a lifecycle for it.
+  ngOnInit(): void {
   }
 
-  // Properties
-  aim = 'Strengthen Your Financial Future'; // string interpolation (component to view)
-  account = 'Enter Your Account Number';  // Property binding - [attributes_name] = 'property'
+  aim = 'Strengthen Your Financial Future'; 
+  account = 'Enter Your Account Number'; 
 
-  // To hold the value from the user
   acno: any;
   pswd: any;
 
-  //model for login
   loginForm = this.fb.group({
     acno: ['', [Validators.required, Validators.pattern('[0-9]*')]],
     pswd: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]]
   })
 
-  // Userdefined functions // 4th executed
 
   login() {
     const acno = this.loginForm.value.acno;
@@ -56,39 +46,4 @@ export class LoginComponent implements OnInit { // 3rd executed
       )
     }
   }
-
-
-
-
-
-
-
-
-  //Event binding - (event_name) = "function_name"   
-  // login(a:any, p:any){ 
-  //   const acno = a.value;
-  //   const pswd = p.value;
-  //   let userDetails = this.userDetails;
-  //   if(acno in userDetails){
-  //     if(pswd == userDetails[acno].password){
-  //       alert('login successfull');
-  //     }else{
-  //       alert('Incorrect password');
-  //     }
-  //   }else{
-  //     alert('user not found');
-  //   }
-  // }
-
-  //Event binding using $event - (event_name) = function_name($event) 
-  // acnoChange(event:any){
-  //   console.log(event.target.value);
-  //   this.acno = event.target.value;
-  //   console.log(this.acno);
-  // }     
-  // pswdChange(event:any){  
-  //   console.log(event.target.value);
-  //   this.pswd = event.target.value;
-  //   console.log(this.pswd);
-  // }
 }

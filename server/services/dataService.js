@@ -1,5 +1,4 @@
 const { json } = require("express")
-// import jsonwebtoken
 const jwt = require('jsonwebtoken');
 
 const db = require("./db");
@@ -65,9 +64,7 @@ const login = (acno, password) => {
     if (password == userDetails[acno].password) {
       currentUser = userDetails[acno].username;
       currenAcno = acno;
-      // Token generation
       const token = jwt.sign({ currenAcno: acno }, 'superkey2023');
-      // superkey2023 will generate a number eg dfjasdijfadsjdjk
       return {
         status: true,
         statusCode: 200,

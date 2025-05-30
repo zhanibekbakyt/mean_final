@@ -1,19 +1,32 @@
-<!-- new transactions -->
+<!-- Filter Buttons -->
+<div class="d-flex justify-content-center mb-3">
+  <button class="btn btn-outline-primary mx-1" [class.active]="filterType === 'all'" (click)="filterType = 'all'">All</button>
+  <button class="btn btn-outline-success mx-1" [class.active]="filterType === 'credit'" (click)="filterType = 'credit'">Credit</button>
+  <button class="btn btn-outline-danger mx-1" [class.active]="filterType === 'debit'" (click)="filterType = 'debit'">Debit</button>
+</div>
 
-<div class="container-1 p-5 " id="cont1">
-    <div class="container mx-auto bg-white py-5" style="min-height:600px ;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
-        <h1>Transaction History</h1>
-        <a routerLink="/dashboard">Back To Home</a>
-        <div class="row border w-75 mx-auto text-center rounded text-dark my-2">
-            <div class="col p-2">Type</div>
-            <div class="col p-2">Amount</div>
-        </div>
-        <div class="row  w-75 mx-auto text-center text-muted my-2" *ngFor="let t of transactions">
-            <div class="col border mx-2 rounded p-2">{{t.type}}</div>
-            <div class="col border mx-2 rounded p-2">₹ {{t.amount}}</div>
-        </div>
-
-        <br><br>
-        
+<!-- Modern Transaction History -->
+<div class="container-fluid min-vh-100 bg-light py-5" id="cont1">
+  <div class="container bg-white rounded shadow-sm p-5" style="min-height: 600px; max-width: 900px;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="fw-bold text-primary">Transaction History</h1>
+      <a routerLink="/dashboard" class="btn btn-outline-primary">Back To Home</a>
     </div>
+
+    <!-- Table Header -->
+    <div class="row bg-primary text-white rounded-top text-center fw-semibold py-2">
+      <div class="col">Type</div>
+      <div class="col">Amount</div>
+    </div>
+
+    <!-- Transaction Rows -->
+    <div *ngFor="let t of filteredTransactions" class="row border-bottom text-center text-secondary py-2 align-items-center">
+      <div class="col text-capitalize">{{ t.type }}</div>
+      <div class="col">{{ t.amount }} tenge</div>
+    </div>
+
+    <div *ngIf="filteredTransactions.length === 0" class="text-center text-muted py-5">
+      No transactions found.
+    </div>
+  </div>
 </div>

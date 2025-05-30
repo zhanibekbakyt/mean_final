@@ -1,46 +1,61 @@
 <!-- Register -->
 <div class="container-1">
-    <div class="register">
-        <div class="reg-intro">
-            <h2>Financial</h2>
-            <h1>Fortress</h1>
-            <p>Welcome to Financial Fortress, where your financial security is our top priority. Register today to take
-                advantage of our secure and convenient banking services. With Financial Fortress, you can easily manage
-                your money, deposit and withdraw funds, and stay on top of your account activity. Open an account today
-                to discover a new level of financial security with us.</p>
-        </div>
-        <div class="reg-form">
-            <h1>Create Account</h1>
-            <form action="" [formGroup]="registerForm">
-                <label for="">Account Number</label>
-                <input type="text" formControlName="acno" name="accountNumber" id="regAcno"
-                    placeholder="Enter Your Account Number">
-                <div *ngIf="this.registerForm.get('acno')?.errors && this.registerForm.get('acno')?.touched"
-                    style="color: #ff4343;">
-                    invalid account number
-                </div>
-
-                <br>
-                <label for="">Username</label>
-                <input type="text" formControlName="uname" name="userName" id="regUname" placeholder="Enter Username">
-                <div *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('uname')?.touched"
-                    style="color: #ff4343;">
-                    invalid user name
-                </div>
-
-                <br>
-                <label for="">Password</label>
-                <input type="password" formControlName="pswd" name="password" id="regPswd" placeholder="Enter Password">
-                <div *ngIf="this.registerForm.get('pswd')?.errors && this.registerForm.get('pswd')?.touched"
-                    style="color: #ff4343;">
-                    invalid password
-                </div>
-
-                <br>
-                <button type="submit" (click)="register()">Register</button>
-
-                <p>Already have an account? <a routerLink="">Sign In</a></p>
-            </form>
-        </div>
+  <div class="register">
+    <div class="reg-intro">
+      <h2>Zhanibek's</h2>
+      <h1>Bank</h1>
+      <p>Welcome to Zhanibek's bank. A small project created as a final task at Narxoz University.</p>
     </div>
+
+    <div class="reg-form">
+      <h1>Create Account</h1>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <label for="regAcno">Account Number</label>
+        <input
+          type="text"
+          id="regAcno"
+          formControlName="acno"
+          placeholder="Enter Your Account Number"
+        />
+        <div
+          *ngIf="registerForm.get('acno')?.errors && registerForm.get('acno')?.touched"
+          style="color: #ff4343;"
+        >
+          Invalid account number
+        </div>
+
+        <label for="regUname">Username</label>
+        <input
+          type="text"
+          id="regUname"
+          formControlName="uname"
+          placeholder="Enter Username"
+        />
+        <div
+          *ngIf="registerForm.get('uname')?.errors && registerForm.get('uname')?.touched"
+          style="color: #ff4343;"
+        >
+          Invalid username
+        </div>
+
+        <label for="regPswd">Password</label>
+        <input
+          type="password"
+          id="regPswd"
+          formControlName="pswd"
+          placeholder="Enter Password"
+        />
+        <div
+          *ngIf="registerForm.get('pswd')?.errors && registerForm.get('pswd')?.touched"
+          style="color: #ff4343;"
+        >
+          Invalid password
+        </div>
+
+        <button type="submit">Register</button>
+
+        <p>Already have an account? <a routerLink="/">Sign In</a></p>
+      </form>
+    </div>
+  </div>
 </div>
