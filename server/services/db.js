@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://0.0.0.0:27017/BankServer", {
+mongoose.connect("mongodb+srv://zhanibekbakyt:12345Zhanibek@cluster1.tlx4mkp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1", {
     useNewUrlParser:true
 });
  
