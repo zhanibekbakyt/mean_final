@@ -1,0 +1,10 @@
+
+<div class="container" *ngIf="item">
+    <div class="row py-5 my-5">
+        <div class="col text-center py-5 my-5">
+            <h4 class="text-danger ">Are You Sure Do You Want To Delete This Account {{item}} ?</h4>
+            <button type="button" (click)="delete()" class="btn btn-danger mx-2">Yes</button>
+            <button type="button" (click)="cancel()" class="btn btn-success mx-2" >No</button>
+        </div>
+    </div>
+</div>

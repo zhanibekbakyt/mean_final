@@ -1,0 +1,93 @@
+ANGULAR
+
+Bank app Angular
+    1.fronend : Angular
+    2.backedn : Nodejs(express)
+    3.DataBase : MongoDb
+
+Basic Building blocks
+    1.Module : To import 3rd party libraries
+    2.Component : To create html css and ts files
+
+Basic Commands
+    1.Create a project - ng new projectName
+    2.Create a component - ng g c componentName
+    3.Run - ng serve -o
+
+Data Binding
+    To share data inside the component
+    ts - component and html - view
+    1.One way data binding (ts -> html or html -> ts)
+        1.Component to view 
+            1.String interpolation - {{expression}}
+            2.Property binding - [attributes_name] = 'property'
+        2.View to component 
+            1.Event binding - (event_name) = "function_name"   
+            2.Event binding using $event - (event_name) = function_name($event)  
+            3.Event binding using template referencing variables - #variable_name      
+    2.Two way data binding (ts -> html and html -> ts)
+        Data share in both directions
+        1.ngModel (library) - import from FormsModule  
+
+Angular routing
+    To set path for a component
+    {
+        path:'',component:LoginComponent
+        //4200
+    },
+    {
+        path:'dashboard',component:DashboardComponent
+        //4200/dashboard
+    }       
+    Use router outlet selector inside the root component
+
+Dependency injection
+    To share between two components
+    Here we use constructer to achive this concept
+    Eg:login to dashboard
+
+Angular services
+    To hold reduntant data
+    to create a service - ng g s service_name     
+
+Angular Directives
+    To manipulate DOM
+    1.component Directives
+    2.Structural Directives
+        example:*ngFor           
+
+Angular Forms 
+    1.Template Driven Forms(designing of html page)
+    2.Model Driven Forms(ts file model, desig -> html page)
+        Used for advanced validation
+        1.Reactive Forms Module
+            group, array, controller
+            import Reactive Forms modules
+
+Local Storage
+    1.setItem
+    2.getItem
+    3.removeItem
+
+Parent Child communication
+    parent-DashboardComponent 
+    child-deleteComponent     
+    parent to child communication - @Input()
+    child to parent communication - @Output()
+
+Angular pipes
+
+Frontend and backend connection (intrgration)
+    HTTPClientModule - app.module
+    1.import { HttpClientModule } from '@angular/common/http' in app.module.ts
+    2.Inject httpclientmodule in datasevice
+    3.using httpclient to make api calls
+
+Asychronous call - RxJs
+    RxJx - Reactive exension for js/ts
+    ts              -             js
+    Observable                    Promise
+    1.Resolve subscribe()         .then
+    2.Reject  catch               .catch
+
+ 

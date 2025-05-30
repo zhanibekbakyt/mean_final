@@ -1,0 +1,19 @@
+<!-- new transactions -->
+
+<div class="container-1 p-5 " id="cont1">
+    <div class="container mx-auto bg-white py-5" style="min-height:600px ;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+        <h1>Transaction History</h1>
+        <a routerLink="/dashboard">Back To Home</a>
+        <div class="row border w-75 mx-auto text-center rounded text-dark my-2">
+            <div class="col p-2">Type</div>
+            <div class="col p-2">Amount</div>
+        </div>
+        <div class="row  w-75 mx-auto text-center text-muted my-2" *ngFor="let t of transactions">
+            <div class="col border mx-2 rounded p-2">{{t.type}}</div>
+            <div class="col border mx-2 rounded p-2">₹ {{t.amount}}</div>
+        </div>
+
+        <br><br>
+        
+    </div>
+</div>
