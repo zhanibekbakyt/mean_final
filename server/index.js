@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: ["https://final-mean-front.vercel.app:4200", "https://final-mean-front.vercel.app:8080"]
+    origin: ["https://mean-final-vdv9.vercel.app:4200", "https://mean-final-vdv9.vercel.app:8080"]
 }));
 
 app.listen(3000, () => {
