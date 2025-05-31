@@ -7,9 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors({
-    origin: ["https://mean-final-vdv9.vercel.app:4200", "https://mean-final-vdv9.vercel.app:8080"]
-}));
+app.use(cors());
 
 app.listen(3000, () => {
     console.log('Listening on port 3000');
