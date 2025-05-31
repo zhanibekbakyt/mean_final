@@ -40,7 +40,7 @@ export class DataService {
       username,
       password
     }
-    return this.http.post('https://mean-final.onrender.com/register', body);
+    return this.http.post('http://localhost:3000/register', body);
   }
 
   login(acno:any, pswd:any){
@@ -49,7 +49,7 @@ export class DataService {
       acno,
       password
     }
-    return this.http.post('https://mean-final.onrender.com/login', body);
+    return this.http.post('http://localhost:3000/login', body);
   }
 
   getToken(){
@@ -67,7 +67,7 @@ export class DataService {
       password:pswd,
       dAmt:dAmt
     }
-    return this.http.post('https://mean-final.onrender.com/deposit', body, this.getToken());
+    return this.http.post('http://localhost:3000/deposit', body, this.getToken());
   }
   
   withdraw(acno1:any, pswd1:any, wAmt:any){
@@ -76,25 +76,25 @@ export class DataService {
     password:pswd1,
     wAmt:wAmt
    }
-   return this.http.post('https://mean-final.onrender.com/withdraw', body, this.getToken());
+   return this.http.post('http://localhost:3000/withdraw', body, this.getToken());
   }
 
   getTransaction(acno:any){
     const body = {
       acno
     }
-    return this.http.post('https://mean-final.onrender.com/transaction', body, this.getToken());
+    return this.http.post('http://localhost:3000/transaction', body, this.getToken());
   }
 
   deleteAcc(acno:any){
-    return this.http.delete('https://mean-final.onrender.com/deleteAcc/'+acno)
+    return this.http.delete('http://localhost:3000/deleteAcc/'+acno)
   }
 
   getBalance(acno:any) {
     const body = {
       acno
     }
-    return this.http.post('https://mean-final.onrender.com/getBalance', body)
+    return this.http.post('http://localhost:3000/getBalance', body)
   }
   
 }

@@ -8,8 +8,8 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin:["http://localhost:4200", "http://127.0.0.1:8080"]
-}))
+    origin: ["https://mean-final-2.onrender.com", "https://mean-final-2.onrender.com"]
+}));
 
 app.listen(3000, () => {
     console.log('Listening on port 3000');
